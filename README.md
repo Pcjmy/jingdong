@@ -1,9 +1,4 @@
-# jingdong
-
-## Project setup
-```
-npm install
-```
+## 仿京东到家
 
 ### Compiles and hot-reloads for development
 ```
