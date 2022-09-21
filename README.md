@@ -1,19 +1,14 @@
 ## 仿京东到家
 
-### Compiles and hot-reloads for development
-```
-npm run serve
+### 项目信息
+
+Vue3
+
+```shell
+项目运行
+>npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+实现的功能
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
++ 首页开发
