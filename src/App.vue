@@ -1,4 +1,11 @@
 <template>
+  <div class="wrapper">
+      <div class="position">
+        <span class="iconfont position__icon">&#xe619;</span>
+        郑州大学新校区柳园3号楼2层
+        <span class="iconfont position_notice">&#xe60b;</span>
+      </div>
+  </div>
   <div class="docker">
     <div class="docker__item docker__item--active">
       <div class="iconfont">&#xe6f3;</div>
@@ -20,6 +27,35 @@
 </template>
 
 <style lang="scss">
+@import './style/viriables.scss';
+@import './style/mixins.scss';
+.wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: .5rem;
+  right: 0;
+  padding: 0 .18rem;
+}
+.position {
+  position: relative;
+  padding: .16rem .24rem .16rem 0;
+  line-height: .22rem;
+  font-size: .16rem;
+  @include ellipsis;
+  .position__icon {
+    position: relative;
+    top: .01rem;
+    font-size: .2rem;
+  }
+  .position_notice {
+    position: absolute;
+    right: 0;
+    top: .17rem;
+    font-size: .2rem;
+  }
+  color: $content-fontcolor;
+}
 .docker {
   display: flex;
   box-sizing: border-box;
