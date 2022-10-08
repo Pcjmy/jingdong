@@ -17,7 +17,7 @@ export default {
   name: 'Docker',
   setup () {
     const dockerList = [
-      { icon: '&#e6f3', text: '首页' },
+      { icon: '&#xe6f3;', text: '首页' },
       { icon: '&#xe7e5;', text: '购物车' },
       { icon: '&#xe61e;', text: '订单' },
       { icon: '&#xe660;', text: '我的' }
@@ -27,7 +27,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../../style/viriables.scss';
 .docker {
   display: flex;
