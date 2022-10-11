@@ -9,6 +9,12 @@ Vue3
 >npm run serve
 ```
 
+插件
+
+```shell
+npm install axios --save
+```
+
 实现的功能
 
 + 首页开发
