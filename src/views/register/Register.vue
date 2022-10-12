@@ -2,7 +2,11 @@
     <div class="wrapper">
       <img class="wrapper__img" src="http://www.dell-lee.com/imgs/vue3/user.png"/>
       <div class="wrapper__input">
-        <input class="wrapper__input__content" placeholder="请输入手机号" />
+        <input
+          class="wrapper__input__content"
+          placeholder="请输入用户名"
+          v-model="username"
+        />
       </div>
       <div class="wrapper__input">
         <input
@@ -44,6 +48,15 @@ const useRegisterEffect = (showToast) => {
 
   const handleRegister = async () => {
     try {
+      const { username, password, ensurement } = data
+      if (!username || !password) {
+        showToast('用户名或密码不能为空')
+        return
+      }
+      if (password !== ensurement) {
+        showToast('两次输入密码不一致')
+        return
+      }
       const result = await post('/api/user/register', {
         username: data.username,
         password: data.password
