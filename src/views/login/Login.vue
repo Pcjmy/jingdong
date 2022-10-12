@@ -14,6 +14,7 @@
           class="wrapper__input__content"
           placeholder="请输入密码"
           v-model="data.password"
+          autocomplete="new-password"
         />
       </div>
       <div class="wrapper__login-button" @click="handleLogin">登录</div>
@@ -50,6 +51,12 @@ export default {
     }
     const handleLogin = async () => {
       try {
+        const { username, password } = data
+        // console.log('abc', username == null, password.length)
+        if (!username || !password) {
+          showToast('用户名或密码不能为空')
+          return
+        }
         const result = await post('/api/user/login', {
           username: data.username,
           password: data.password
