@@ -1,33 +1,33 @@
 <template>
-    <div class="position">
-        <span class="iconfont position__icon">&#xe619;</span>
-        郑州大学新校区柳园3号楼2层
-        <span class="iconfont position_notice">&#xe60b;</span>
-    </div>
-    <div class="search">
+  <div class="position">
+    <span class="iconfont position__icon">&#xe619;</span>
+    郑州大学新校区柳园3号楼2层
+    <span class="iconfont position_notice">&#xe60b;</span>
+  </div>
+  <div class="search">
     <span class="iconfont">&#xe62d;</span>
     <span class="search__text">山姆会员商店优惠商品</span>
-    </div>
-    <div class="banner">
+  </div>
+  <div class="banner">
     <img
-        class="banner__img"
-        src="http://www.dell-lee.com/imgs/vue3/banner.jpg"
+      class="banner__img"
+      src="http://www.dell-lee.com/imgs/vue3/banner.jpg"
     />
+  </div>
+  <div class="icons">
+    <div
+      class="icons__item"
+      v-for="item in iconsList"
+      :key="item.desc"
+    >
+      <img
+        class="icons__item__img"
+        :src="`http://www.dell-lee.com/imgs/vue3/${item.imgName}.png`"
+      />
+      <p class="icons__item__desc">{{item.desc}}</p>
     </div>
-    <div class="icons">
-      <div
-        class="icons__item"
-        v-for="item in iconsList"
-        :key="item.desc"
-      >
-        <img
-          class="icons__item__img"
-          :src="`http://www.dell-lee.com/imgs/vue3/${item.imgName}.png`"
-        />
-        <p class="icons__item__desc">{{item.desc}}</p>
-      </div>
-    </div>
-    <div class="gap"></div>
+  </div>
+  <div class="gap"></div>
 </template>
 
 <script>
@@ -89,7 +89,6 @@ export default {
     font-size: .14rem;
   }
 }
-
 .banner {
   height: 0;
   overflow: hidden;
