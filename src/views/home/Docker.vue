@@ -1,11 +1,10 @@
 <template>
   <div class="docker">
-      <div
-        v-for="(item, index) in dockerList"
-        :class="{'docker__item': true, 'docker__item--active': index === 0}"
-        class="docker__item "
-        :key="item.icon"
-      >
+    <div
+      v-for="(item, index) in dockerList"
+      :class="{'docker__item': true, 'docker__item--active': index === 0}"
+      :key="item.icon"
+    >
       <div class="iconfont" v-html="item.icon" />
       <div class="docker__title">{{item.text}}</div>
     </div>
@@ -38,7 +37,8 @@ export default {
   bottom: 0;
   width: 100%;
   height: .49rem;
-  border-top: 1px solid #F1F1F1;
+  border-top: .01rem solid $content-bgColor;
+  color: $content-fontcolor;
   &__item {
     flex: 1;
     text-align: center;
@@ -51,7 +51,7 @@ export default {
     }
   }
   &__title {
-    font-size: 20px;
+    font-size: .2rem;
     transform: scale(.5, .5);
     transform-origin: center top;
   }
