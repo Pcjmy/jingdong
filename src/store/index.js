@@ -9,7 +9,7 @@ const setLocalCartList = (state) => {
 const getLocaCartList = () => {
   // { shopId: {shopName:'', productList:{ productId: {} }}}
   if (localStorage.cartList == null ) {
-    return null
+    return {}
   }
   return JSON.parse(localStorage.cartList)
 }

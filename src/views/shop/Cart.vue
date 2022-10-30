@@ -1,4 +1,5 @@
 <template>
+  <!-- <h1>购物车</h1> -->
   <div
     class="mask"
     v-if="showCart && calculations.total > 0"
@@ -88,6 +89,7 @@ const useCartEffect = (shopId) => {
   const store = useStore()
   const { cartList, changeCartItemInfo } = useCommonCartEffect()
   const calculations = computed(() => {
+    // console.log(shopId);
     const productList = cartList[shopId]?.productList
     const result = { total: 0, price: 0, allChecked: true }
     if (productList) {

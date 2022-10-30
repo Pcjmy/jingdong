@@ -41,6 +41,22 @@ const getLocaCartList = () => {
 
 
 
+```shell
+Cart.vue?b406:93 Uncaught (in promise) TypeError: Cannot read properties of null (reading '1')
+    at ReactiveEffect.eval [as fn] (Cart.vue?b406:93:1)
+```
+
+解决办法：cartList为null时要返回{}而不是null
+
+```javascript
+const getLocaCartList = () => {
+  if (localStorage.cartList == null ) {
+    return {}
+  }
+  return JSON.parse(localStorage.cartList)
+}
+```
+
 
 
 
