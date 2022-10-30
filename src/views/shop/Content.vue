@@ -46,12 +46,12 @@ import { reactive, ref, toRefs, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import { get } from '../../utils/request'
-import { useCommonCartEffect } from './commonCartEffect'
+import { useCommonCartEffect } from '../../effects/cartEffects'
 
 const categories = [
   { name: '全部商品', tab: 'all' },
-  { name: '秒杀', tab: 'seckill' },
-  { name: '新鲜水果', tab: 'fruit' }
+  { name:'秒杀', tab: 'seckill' },
+  { name: '新鲜水果', tab: 'fruit'}
 ]
 
 // Tab 切换相关的逻辑
@@ -60,7 +60,7 @@ const useTabEffect = () => {
   const handleTabClick = (tab) => {
     currentTab.value = tab
   }
-  return { currentTab, handleTabClick }
+  return { currentTab, handleTabClick}
 }
 
 // 列表内容相关的逻辑
@@ -70,8 +70,8 @@ const useCurrentListEffect = (currentTab, shopId) => {
     const result = await get(`/api/shop/${shopId}/products`, {
       tab: currentTab.value
     })
-    if (result?.errno === 0 && result?.data?.length) {
-      content.list = result.data
+    if(result?.errno === 0 && result?.data?.length) {
+      content.list = result.data;
     }
   }
   watchEffect(() => { getContentData() })
@@ -99,21 +99,15 @@ const useCartEffect = () => {
 export default {
   name: 'Content',
   props: ['shopName'],
-  setup () {
+  setup() {
     const route = useRoute()
     const shopId = route.params.id
     const { currentTab, handleTabClick } = useTabEffect()
     const { list } = useCurrentListEffect(currentTab, shopId)
     const { changeCartItem, cartList, getProductCartCount } = useCartEffect()
     return {
-      categories,
-      currentTab,
-      handleTabClick,
-      list,
-      shopId,
-      changeCartItem,
-      cartList,
-      getProductCartCount
+      categories, currentTab, handleTabClick, list,
+      shopId, changeCartItem, cartList, getProductCartCount
     }
   }
 }
@@ -216,5 +210,6 @@ export default {
       }
     }
   }
+  
 }
 </style>

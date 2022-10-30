@@ -32,7 +32,7 @@ const useShopInfoEffect = () => {
   const data = reactive({ item: {} })
   const getItemData = async () => {
     const result = await get(`/api/shop/${route.params.id}`)
-    if (result?.errno === 0 && result?.data) {
+    if(result?.errno === 0 && result?.data) {
       data.item = result.data
     }
   }
@@ -52,7 +52,7 @@ const useBackRouterEffect = () => {
 export default {
   name: 'Shop',
   components: { ShopInfo, Content, Cart },
-  setup () {
+  setup() {
     const { item, getItemData } = useShopInfoEffect()
     const handleBackClick = useBackRouterEffect()
     getItemData()

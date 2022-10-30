@@ -1,5 +1,4 @@
 <template>
-  <!-- <h1>购物车</h1> -->
   <div
     class="mask"
     v-if="showCart && calculations.total > 0"
@@ -25,37 +24,36 @@
           >清空购物车</span>
         </div>
       </div>
-      <template
+      <div
         v-for="item in productList"
         :key="item._id"
+        class="product__item"
       >
-        <div class="product__item" v-if="item.count > 0">
-          <div
-            class="product__item__checked iconfont"
-            v-html="item.check ? '&#xe652;': '&#xe667;'"
-            @click="() => changeCartItemChecked(shopId, item._id)"
-          />
-          <img class="product__item__img" :src="item.imgUrl" />
-          <div class="product__item__detail">
-            <h4 class="product__item__title">{{item.name}}</h4>
-            <p class="product__item__price">
-              <span class="product__item__yen">&yen;</span>{{item.price}}
-              <span class="product__item__origin">&yen;{{item.oldPrice}}</span>
-            </p>
-          </div>
-          <div class="product__number">
-            <span
-              class="product__number__minus"
-              @click="() => { changeCartItemInfo(shopId, item._id, item, -1) }"
-            >-</span>
-              {{item.count || 0}}
-            <span
-              class="product__number__plus"
-              @click="() => { changeCartItemInfo(shopId, item._id, item, 1) }"
-            >+</span>
-          </div>
+        <div
+          class="product__item__checked iconfont"
+          v-html="item.check ? '&#xe652;': '&#xe667;'"
+          @click="() => changeCartItemChecked(shopId, item._id)"
+        />
+        <img class="product__item__img" :src="item.imgUrl" />
+        <div class="product__item__detail">
+          <h4 class="product__item__title">{{item.name}}</h4>
+          <p class="product__item__price">
+            <span class="product__item__yen">&yen;</span>{{item.price}}
+            <span class="product__item__origin">&yen;{{item.oldPrice}}</span>
+          </p>
         </div>
-      </template>
+        <div class="product__number">
+          <span
+            class="product__number__minus"
+            @click="() => { changeCartItemInfo(shopId, item._id, item, -1) }"
+          >-</span>
+            {{item.count || 0}}
+          <span
+            class="product__number__plus"
+            @click="() => { changeCartItemInfo(shopId, item._id, item, 1) }"
+          >+</span>
+        </div>
+      </div>
     </div>
     <div class="check">
       <div class="check__icon">
@@ -69,8 +67,8 @@
       <div class="check__info">
         总计：<span class="check__info__price">&yen; {{calculations.price}}</span>
       </div>
-      <div class="check__btn">
-        <router-link :to="{name: 'Home'}">
+      <div class="check__btn" v-show="calculations.total > 0">
+        <router-link :to="{path: `/orderConfirmation/${shopId}`}">
           去结算
         </router-link>
       </div>
@@ -79,91 +77,59 @@
 </template>
 
 <script>
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
-import { useCommonCartEffect } from './commonCartEffect'
+import { useCommonCartEffect } from '../../effects/cartEffects'
 
 // 获取购物车信息逻辑
 const useCartEffect = (shopId) => {
-  const store = useStore()
-  const { cartList, changeCartItemInfo } = useCommonCartEffect()
-  const calculations = computed(() => {
-    // console.log(shopId);
-    const productList = cartList[shopId]?.productList
-    const result = { total: 0, price: 0, allChecked: true }
-    if (productList) {
-      for (const i in productList) {
-        const product = productList[i]
-        result.total += product.count
-        if (product.check) {
-          result.price += (product.count * product.price)
-        }
-        if (product.count > 0 && !product.check) {
-          result.allChecked = false
-        }
-      }
+    const store = useStore()
+    const {
+      productList, calculations, changeCartItemInfo
+    } = useCommonCartEffect(shopId)
+
+    const changeCartItemChecked = (shopId, productId) => {
+      store.commit('changeCartItemChecked', {shopId, productId})
     }
-    result.price = result.price.toFixed(2)
-    return result
-  })
 
-  const productList = computed(() => {
-    const productList = cartList[shopId]?.productList || []
-    return productList
-  })
+    const cleanCartProducts = (shopId) => {
+      store.commit('cleanCartProducts', { shopId })
+    }
 
-  const changeCartItemChecked = (shopId, productId) => {
-    store.commit('changeCartItemChecked', { shopId, productId })
-  }
+    const setCartItemsChecked = (shopId) => {
+      store.commit('setCartItemsChecked', { shopId })
+    }
 
-  const cleanCartProducts = (shopId) => {
-    store.commit('cleanCartProducts', { shopId })
-  }
-
-  const setCartItemsChecked = (shopId) => {
-    store.commit('setCartItemsChecked', { shopId })
-  }
-
-  return {
-    calculations,
-    productList,
-    cleanCartProducts,
-    changeCartItemInfo,
-    changeCartItemChecked,
-    setCartItemsChecked
-  }
+    return {
+      calculations, productList, cleanCartProducts,
+      changeCartItemInfo, changeCartItemChecked, setCartItemsChecked,
+    }
 }
 
 // 展示隐藏购物车逻辑
 const toggleCartEffect = () => {
   const showCart = ref(false)
   const handleCartShowChange = () => {
-    showCart.value = !showCart.value
+    showCart.value = !showCart.value;
   }
-  return { showCart, handleCartShowChange }
+  return { showCart, handleCartShowChange}
 }
 
 export default {
   name: 'Cart',
-  setup () {
-    const route = useRoute()
-    const shopId = route.params.id
+  setup() {
+    const route = useRoute();
+    const shopId = route.params.id;
     const {
       calculations, productList, cleanCartProducts,
       changeCartItemInfo, changeCartItemChecked, setCartItemsChecked
     } = useCartEffect(shopId)
     const { showCart, handleCartShowChange } = toggleCartEffect()
     return {
-      calculations,
-      shopId,
-      productList,
-      cleanCartProducts,
-      changeCartItemInfo,
-      changeCartItemChecked,
-      setCartItemsChecked,
-      showCart,
-      handleCartShowChange
+      calculations, shopId, productList, cleanCartProducts,
+      changeCartItemInfo, changeCartItemChecked,
+      setCartItemsChecked, showCart, handleCartShowChange
     }
   }
 }
