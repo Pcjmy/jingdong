@@ -1,10 +1,13 @@
 <template>
-  <div class="cart">待实现</div>
+  <div class="cart">我的全部购物车</div>
+  <Docker :currentIndex="1"/>
 </template>
 
 <script>
+import Docker from '../../components/Docker'
 export default {
-  name: 'CartList'
+  name: 'CartList',
+  components: { Docker }
 }
 </script>
 
@@ -12,5 +15,6 @@ export default {
 .cart {
   margin-top: .2rem;
   text-align: center;
+  font-size: .16rem;
 }
 </style>
