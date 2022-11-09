@@ -5,8 +5,15 @@
 Vue3
 
 ```shell
+项目初始化
+> vue create jingdong
+Router
+Vuex
+CSS Pre-processors
+Sass/SCSS (with dart-sass)
+ESLint + Standard config
 项目运行
->npm run serve
+> npm run serve
 ```
 
 插件
