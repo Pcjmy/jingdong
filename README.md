@@ -20,6 +20,7 @@ ESLint + Standard config
 
 ```shell
 npm install axios --save
+npm install mddir -g
 ```
 
 实现的功能
