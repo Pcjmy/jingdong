@@ -48,6 +48,14 @@ const useRegisterEffect = (showToast) => {
 
   const handleRegister = async () => {
     try {
+      if (username.value === '' || password.value === '') {
+        showToast('用户名或密码不能为空')
+        return ;
+      }
+      if (password.value !== ensurement.value) {
+        showToast('两次输入密码不一致');
+        return ;
+      }
       const result = await post('/api/user/register', {
         username: data.username,
         password: data.password

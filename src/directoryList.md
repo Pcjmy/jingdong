@@ -30,7 +30,7 @@
         |   |-- Nearby.vue
         |   |-- StaticPart.vue
         |-- login
-        |   |-- Login.vue
+        |   |-- Login.vue  登录页面
         |-- orderConfirmation
         |   |-- Order.vue
         |   |-- OrderConfirmation.vue
@@ -39,10 +39,9 @@
         |-- orderList
         |   |-- OrderList.vue
         |-- register
-        |   |-- Register.vue
+        |   |-- Register.vue  注册页面
         |-- shop
             |-- Cart.vue
             |-- Content.vue
             |-- Shop.vue
 ```
-
