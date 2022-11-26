@@ -71,7 +71,7 @@ const useRegisterEffect = (showToast) => {
   }
 
   const { username, password, ensurement } = toRefs(data)
-  return { username, password, ensurement, handleRegister}
+  return { username, password, ensurement, handleRegister }
 }
 
 // 处理登陆跳转

@@ -5,9 +5,9 @@
     |-- assets
     |   |-- logo.png
     |-- components
-    |   |-- Docker.vue
+    |   |-- Docker.vue 底部栏
     |   |-- ShopInfo.vue
-    |   |-- Toast.vue
+    |   |-- Toast.vue  提示框
     |-- effects
     |   |-- cartEffects.js
     |-- router
@@ -41,7 +41,7 @@
         |-- register
         |   |-- Register.vue  注册页面
         |-- shop
-            |-- Cart.vue
+            |-- Cart.vue  购物车
             |-- Content.vue
             |-- Shop.vue
 ```

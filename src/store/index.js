@@ -16,6 +16,22 @@ const getLocaCartList = () => {
 export default Vuex.createStore({
   state: {
     cartList: getLocaCartList()
+    // cartList: {
+    //   // 第一层级是商铺的id
+    //   shopId: {
+    //     // 第二层是商品id
+    //     // 第二层内容是商品内容以及购物数量
+    //     productId: {
+    //       _id:
+    //       name:
+    //       imgUrl:
+    //       sales:
+    //       price:
+    //       oldPrice:
+    //       count:
+    //     }
+    //   }
+    // }
   },
   mutations: {
     changeCartItemInfo(state, payload) {
