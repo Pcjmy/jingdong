@@ -23,12 +23,6 @@ npm install axios --save
 npm install mddir -g
 ```
 
-实现的功能
-
-+ 首页开发
-
-![](image/实现页面/首页.png)
-
 ### 遇到的问题
 
 ```shell
