@@ -16,13 +16,6 @@ ESLint + Standard config
 > npm run serve
 ```
 
-插件
-
-```shell
-npm install axios --save
-npm install mddir -g
-```
-
 实现的功能
 
 + 首页开发
