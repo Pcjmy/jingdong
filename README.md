@@ -77,9 +77,3 @@ const getLocaCartList = () => {
 
 解决办法：将px换成rem，根据屏幕宽度设置html的fontsize
 
-
-
-
-
-
-

@@ -12,7 +12,7 @@ import ProductList from './ProductList'
 import Order from './Order'
 export default {
   name: 'OrderConfirmation',
-  components: { TopArea, ProductList, Order },
+  components: { TopArea, ProductList, Order }
 }
 </script>
 
