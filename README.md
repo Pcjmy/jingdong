@@ -16,12 +16,11 @@ ESLint + Standard config
 > npm run serve
 ```
 
-插件
+实现的功能
 
-```shell
-npm install axios --save
-npm install mddir -g
-```
++ 首页开发
+
+![](image/实现页面/首页.png)
 
 ### 遇到的问题
 
@@ -70,10 +69,4 @@ const getLocaCartList = () => {
 移动端适配问题
 
 解决办法：将px换成rem，根据屏幕宽度设置html的fontsize
-
-
-
-
-
-
 

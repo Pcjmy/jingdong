@@ -1,7 +1,11 @@
 <template>
   <div class="order">
-    <div class="order__price">实付金额 <b>¥{{calculations.price}}</b></div>
-    <div class="order__btn" @click="() => handleShowConfirmChange(true)">提交订单</div>
+    <div class="order__price">
+      实付金额 <b>¥{{ calculations.price }}</b>
+    </div>
+    <div class="order__btn" @click="() => handleShowConfirmChange(true)">
+      提交订单
+    </div>
   </div>
   <div
     class="mask"
@@ -15,11 +19,15 @@
         <div
           class="mask__content__btn mask__content__btn--first"
           @click="() => handleConfirmOrder(true)"
-        >取消订单</div>
+        >
+          取消订单
+        </div>
         <div
           class="mask__content__btn mask__content__btn--last"
           @click="() => handleConfirmOrder(false)"
-        >确认支付</div>
+        >
+          确认支付
+        </div>
       </div>
     </div>
   </div>
@@ -39,9 +47,9 @@ const useMakeOrderEffect = (shopId, shopName, productList) => {
 
   const handleConfirmOrder = async (isCanceled) => {
     const products = []
-    for(let i in productList.value) {
+    for (const i in productList.value) {
       const product = productList.value[i]
-      products.push({id: parseInt(product._id, 10), num: product.count})
+      products.push({ id: parseInt(product._id, 10), num: product.count })
     }
     try {
       const result = await post('/api/order', {
@@ -54,7 +62,7 @@ const useMakeOrderEffect = (shopId, shopName, productList) => {
       if (result?.errno === 0) {
         store.commit('clearCartData', shopId)
         router.push({ name: 'OrderList' })
-      } 
+      }
     } catch (e) {
       // 提示下单失败
     }
@@ -77,9 +85,18 @@ export default {
     const route = useRoute()
     const shopId = parseInt(route.params.id, 10)
     const { calculations, shopName, productList } = useCommonCartEffect(shopId)
-    const { handleConfirmOrder } = useMakeOrderEffect(shopId, shopName, productList)
+    const { handleConfirmOrder } = useMakeOrderEffect(
+      shopId,
+      shopName,
+      productList
+    )
     const { showConfirm, handleShowConfirmChange } = useShowMaskEffect()
-    return { showConfirm, handleShowConfirmChange, calculations, handleConfirmOrder }
+    return {
+      showConfirm,
+      handleShowConfirmChange,
+      calculations,
+      handleConfirmOrder
+    }
   }
 }
 </script>
@@ -92,21 +109,21 @@ export default {
   right: 0;
   bottom: 0;
   display: flex;
-  height: .49rem;
-  line-height: .49rem;
+  height: 0.49rem;
+  line-height: 0.49rem;
   background: $bgColor;
   &__price {
     flex: 1;
-    text-indent: .24rem;
-    font-size: .14rem;
+    text-indent: 0.24rem;
+    font-size: 0.14rem;
     color: $content-fontcolor;
   }
   &__btn {
-    width: .98rem;
-    background: #4FB0F9;
+    width: 0.98rem;
+    background: #4fb0f9;
     color: #fff;
     text-align: center;
-    font-size: .14rem;
+    font-size: 0.14rem;
   }
 }
 .mask {
@@ -116,7 +133,7 @@ export default {
   right: 0;
   bottom: 0;
   top: 0;
-  background: rgba(0,0,0,0.50);
+  background: rgba(0, 0, 0, 0.5);
   &__content {
     position: absolute;
     top: 50%;
@@ -124,38 +141,38 @@ export default {
     transform: translate(-50%, -50%);
     width: 3rem;
     height: 1.56rem;
-    background: #FFF;
+    background: #fff;
     text-align: center;
-    border-radius: .04rem;
+    border-radius: 0.04rem;
     &__title {
-      margin: .24rem 0 0 0;
-      line-height: .26rem;
-      font-size: .18rem;
+      margin: 0.24rem 0 0 0;
+      line-height: 0.26rem;
+      font-size: 0.18rem;
       color: #333;
     }
     &__desc {
-      margin: .08rem 0 0 0;
-      font-size: .14rem;
+      margin: 0.08rem 0 0 0;
+      font-size: 0.14rem;
       color: #666666;
     }
     &__btns {
       display: flex;
-      margin: .24rem .58rem;
+      margin: 0.24rem 0.58rem;
     }
     &__btn {
       flex: 1;
-      width: .8rem;
-      line-height: .32rem;
-      border-radius: .16rem;
-      font-size: .14rem;
+      width: 0.8rem;
+      line-height: 0.32rem;
+      border-radius: 0.16rem;
+      font-size: 0.14rem;
       &--first {
-        margin-right: .12rem;
-        border: .01rem solid #4FB0F9;
-        color: #4FB0F9;
+        margin-right: 0.12rem;
+        border: 0.01rem solid #4fb0f9;
+        color: #4fb0f9;
       }
       &--last {
-        margin-left: .12rem;
-        background: #4FB0F9;
+        margin-left: 0.12rem;
+        background: #4fb0f9;
         color: #fff;
       }
     }
