@@ -81,3 +81,7 @@ const getLocaCartList = () => {
 浏览器的默认最小字体大小是12像素，需要将字体设为10像素
 
 解决办法：`transform: scale()`
+
+图片加载过程中页面抖动
+
+解决办法：使用padding-bottom预留空间
