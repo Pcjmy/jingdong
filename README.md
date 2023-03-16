@@ -77,3 +77,7 @@ const getLocaCartList = () => {
 不同浏览器显示差异
 
 解决办法：安装normalize.css
+
+浏览器的默认最小字体大小是12像素，需要将字体设为10像素
+
+解决办法：`transform: scale()`
