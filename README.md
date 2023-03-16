@@ -51,23 +51,18 @@ const getLocaCartList = () => {
 }
 
 3.真机上加号图标显示与浏览器不同
-
 解决办法：换用iconfont，调整CSS样式
 
 
 4.移动端适配问题
-
 解决办法：将px换成rem，根据屏幕宽度设置html的fontsize
 
 5.不同浏览器显示差异
-
 解决办法：安装normalize.css
 
 6.浏览器的默认最小字体大小是12像素，需要将字体设为10像素
-
 解决办法：`transform: scale()`
 
 7.图片加载过程中页面抖动
-
 解决办法：使用padding-bottom预留空间
 ```
