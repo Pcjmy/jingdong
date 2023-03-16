@@ -16,6 +16,11 @@ ESLint + Standard config
 > npm run serve
 ```
 
+BEM CSS规范
+
++ 使用双下划线连接块和元素
++ 使用双破折号连接块或元素和修饰符
+
 实现的功能
 
 + 首页开发
