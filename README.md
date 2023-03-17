@@ -65,4 +65,7 @@ const getLocaCartList = () => {
 
 7.图片加载过程中页面抖动
 解决办法：使用padding-bottom预留空间
+
+8.插值表达式中的特殊字符会被转义
+解决办法：使用v-html指令
 ```
