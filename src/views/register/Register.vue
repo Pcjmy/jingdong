@@ -30,7 +30,7 @@
     </div>
     <div class="wrapper__register-button" @click="handleRegister">注册</div>
     <div class="wrapper__register-link" @click="handleLoginClick">
-      已有账号去登陆
+      已有账号去登录
     </div>
     <Toast v-if="show" :message="toastMessage" />
   </div>
@@ -79,7 +79,7 @@ const useRegisterEffect = (showToast) => {
   return { username, password, ensurement, handleRegister }
 }
 
-// 处理登陆跳转
+// 处理登录跳转
 const useLoginEffect = () => {
   const router = useRouter()
   const handleLoginClick = () => {
