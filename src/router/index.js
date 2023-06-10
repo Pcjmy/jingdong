@@ -50,6 +50,14 @@ const routes = [
       const { isLogin } = localStorage
       isLogin ? next({ name: 'Home' }) : next()
     }
+  },
+  {
+    path: '/person',
+    name: 'PersonalInfo',
+    component: () =>
+      import(
+        /* webpackChunkName: "person" */ '../views/personalInfo/PersonalInfo'
+      )
   }
 ]
 
