@@ -14,7 +14,7 @@
         <div class="list__item__arrow iconfont">&#xe6f2;</div>
       </div>
     </div>
-    <div class="logout" @click="handleLogout">退出登陆</div>
+    <div class="logout" @click="handleLogout">退出登录</div>
   </div>
   <Docker :currentIndex="3" />
 </template>

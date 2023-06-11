@@ -8,7 +8,7 @@
     </div>
     <div class="top__receiver">
       <div class="top__receiver__title">收货地址</div>
-      <div class="top__receiver__address">郑州大学新校区柳园3号楼2层</div>
+      <div class="top__receiver__address">北京理工大学国防科技院2号楼10层</div>
       <div class="top__receiver__info">
         <span class="top__receiver__info__name">倒流时间（先生）</span>
         <span class="top__receiver__info__name">15236072935</span>

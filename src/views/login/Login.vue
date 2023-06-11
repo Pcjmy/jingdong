@@ -20,7 +20,7 @@
         autocomplete="new-password"
       />
     </div>
-    <div class="wrapper__login-button" @click="handleLogin">登陆</div>
+    <div class="wrapper__login-button" @click="handleLogin">登录</div>
     <div class="wrapper__login-link" @click="handleRegisterClick">立即注册</div>
     <Toast v-if="show" :message="toastMessage" />
   </div>
