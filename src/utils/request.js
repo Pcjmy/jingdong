@@ -37,3 +37,20 @@ export const post = (url, data = {}) => {
       )
   })
 }
+
+export const patch = (url, data = {}) => {
+  return new Promise((resolve, reject) => {
+    instance
+      .patch(url, data, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then((response) => {
+        resolve(response.data)
+      })
+      .catch((err) => {
+        reject(err)
+      })
+  })
+}

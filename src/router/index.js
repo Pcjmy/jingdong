@@ -40,6 +40,14 @@ const routes = [
       )
   },
   {
+    path: '/upsertAddress/:id?',
+    name: 'UpsertAddress',
+    component: () =>
+      import(
+        /* webpackChunkName: "upsertAddress" */ '../views/upsertAddress/UpsertAddress'
+      )
+  },
+  {
     path: '/register',
     name: 'Register',
     component: () =>
