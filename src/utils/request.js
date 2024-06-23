@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const instance = axios.create({
   baseURL: 'http://localhost:3000',
-  withCredentials: true, // 允许跨域传递cookie
+  withCredentials: true, // 允许跨域传递cookie（登录）
   timeout: 10000
 })
 
