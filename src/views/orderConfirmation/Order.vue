@@ -51,8 +51,6 @@ const useMakeOrderEffect = (shopId, shopName, productList, address) => {
   const store = useStore()
 
   const handleConfirmOrder = async (isCanceled) => {
-    console.log('abc')
-    console.log('address.value=', address.value)
     const products = []
     for (const i in productList.value) {
       const product = productList.value[i]

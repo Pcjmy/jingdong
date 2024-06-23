@@ -93,7 +93,6 @@ export default Vuex.createStore({
       state.cartList[shopId].productList = {}
     },
     changeAddressList(state, addressList) {
-      console.log('addressList=', addressList)
       state.addressList.splice(0, state.addressList.length, ...addressList)
     }
   }
