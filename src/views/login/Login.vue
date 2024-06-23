@@ -20,7 +20,7 @@
         autocomplete="new-password"
       />
     </div>
-    <div class="wrapper__login-button" @click="handleLogin">登陆</div>
+    <div class="wrapper__login-button" @click="handleLogin">登录</div>
     <div class="wrapper__login-link" @click="handleRegisterClick">立即注册</div>
     <Toast v-if="show" :message="toastMessage" />
   </div>
@@ -32,7 +32,7 @@ import { useRouter } from 'vue-router'
 import { post } from '../../utils/request'
 import Toast, { useToastEffect } from '../../components/Toast'
 
-// 处理注册逻辑
+// 处理登录逻辑
 const useLoginEffect = (showToast) => {
   const router = useRouter()
   const data = reactive({ username: '', password: '' })
@@ -51,7 +51,7 @@ const useLoginEffect = (showToast) => {
         localStorage.isLogin = true
         router.push({ name: 'Home' })
       } else {
-        showToast('登陆失败')
+        showToast('登录失败')
       }
     } catch (e) {
       showToast('请求失败')

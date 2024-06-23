@@ -32,6 +32,30 @@ const routes = [
     component: () => import(/* webpackChunkName: "shop" */ '../views/shop/Shop')
   },
   {
+    path: '/myAddressList',
+    name: 'MyAddressList',
+    component: () =>
+      import(
+        /* webpackChunkName: "myAddressList" */ '../views/myAddressList/MyAddressList'
+      )
+  },
+  {
+    path: '/upsertAddress/:id?',
+    name: 'UpsertAddress',
+    component: () =>
+      import(
+        /* webpackChunkName: "upsertAddress" */ '../views/upsertAddress/UpsertAddress'
+      )
+  },
+  {
+    path: '/chooseAddressList/:shopId',
+    name: 'ChooseAddressList',
+    component: () =>
+      import(
+        /* webpackChunkName: "chooseAddressList" */ '../views/chooseAddressList/ChooseAddressList'
+      )
+  },
+  {
     path: '/register',
     name: 'Register',
     component: () =>
@@ -50,6 +74,14 @@ const routes = [
       const { isLogin } = localStorage
       isLogin ? next({ name: 'Home' }) : next()
     }
+  },
+  {
+    path: '/person',
+    name: 'PersonalInfo',
+    component: () =>
+      import(
+        /* webpackChunkName: "person" */ '../views/personalInfo/PersonalInfo'
+      )
   }
 ]
 

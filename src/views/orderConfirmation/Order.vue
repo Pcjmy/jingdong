@@ -3,7 +3,11 @@
     <div class="order__price">
       实付金额 <b>¥{{ calculations.price }}</b>
     </div>
-    <div class="order__btn" @click="() => handleShowConfirmChange(true)">
+    <div
+      v-if="address"
+      class="order__btn"
+      @click="() => handleShowConfirmChange(true)"
+    >
       提交订单
     </div>
   </div>
@@ -39,9 +43,10 @@ import { useRouter, useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import { post } from '../../utils/request'
 import { useCommonCartEffect } from '../../effects/cartEffects'
+import useAddressEffect from './addressEffect'
 
 // 下单相关逻辑
-const useMakeOrderEffect = (shopId, shopName, productList) => {
+const useMakeOrderEffect = (shopId, shopName, productList, address) => {
   const router = useRouter()
   const store = useStore()
 
@@ -49,11 +54,11 @@ const useMakeOrderEffect = (shopId, shopName, productList) => {
     const products = []
     for (const i in productList.value) {
       const product = productList.value[i]
-      products.push({ id: parseInt(product._id, 10), num: product.count })
+      products.push({ id: product._id, num: product.count })
     }
     try {
       const result = await post('/api/order', {
-        addressId: 1,
+        addressId: address.value._id,
         shopId,
         shopName: shopName.value,
         isCanceled,
@@ -83,15 +88,18 @@ export default {
   name: 'Order',
   setup() {
     const route = useRoute()
-    const shopId = parseInt(route.params.id, 10)
+    const shopId = route.params.id
+    const address = useAddressEffect()
     const { calculations, shopName, productList } = useCommonCartEffect(shopId)
     const { handleConfirmOrder } = useMakeOrderEffect(
       shopId,
       shopName,
-      productList
+      productList,
+      address
     )
     const { showConfirm, handleShowConfirmChange } = useShowMaskEffect()
     return {
+      address,
       showConfirm,
       handleShowConfirmChange,
       calculations,
