@@ -10,9 +10,15 @@
 import TopArea from './TopArea'
 import ProductList from './ProductList'
 import Order from './Order'
+import useCommonAddressEffect from '../../effects/addressEffect'
+
 export default {
   name: 'OrderConfirmation',
-  components: { TopArea, ProductList, Order }
+  components: { TopArea, ProductList, Order },
+  setup() {
+    const { getAddressList } = useCommonAddressEffect()
+    getAddressList()
+  }
 }
 </script>
 

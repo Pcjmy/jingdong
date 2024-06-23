@@ -48,6 +48,14 @@ const routes = [
       )
   },
   {
+    path: '/chooseAddressList/:shopId',
+    name: 'ChooseAddressList',
+    component: () =>
+      import(
+        /* webpackChunkName: "chooseAddressList" */ '../views/chooseAddressList/ChooseAddressList'
+      )
+  },
+  {
     path: '/register',
     name: 'Register',
     component: () =>
